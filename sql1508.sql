@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           8.0.41 - MySQL Community Server - GPL
+-- Versão do servidor:           8.0.36 - MySQL Community Server - GPL
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.10.0.7000
+-- HeidiSQL Versão:              12.8.0.6908
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,13 +29,9 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   `dataHora` datetime NOT NULL,
   `usuario` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`codAuditoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Registrar as ações importantes do sistema. Exemplos: venda de produtos, inserção de marcas, atualização de preços, etc.';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Registrar as ações importantes do sistema. Exemplos: venda de produtos, inserção de marcas, atualização de preços, etc.';
 
--- Copiando dados para a tabela lanchonete_2d_2024.auditoria: ~2 rows (aproximadamente)
-DELETE FROM `auditoria`;
-INSERT INTO `auditoria` (`codAuditoria`, `acao`, `tabela`, `dataHora`, `usuario`) VALUES
-	(9, 'Marca cadastrada: ELMA CHIPS', 'marca', '2025-07-18 09:10:35', 'root@localhost'),
-	(10, 'Marca cadastrada: COCA COLA', 'marca', '2025-07-18 09:11:17', 'root@localhost');
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.cargo
 DROP TABLE IF EXISTS `cargo`;
@@ -46,12 +42,7 @@ CREATE TABLE IF NOT EXISTS `cargo` (
   PRIMARY KEY (`codCargo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.cargo: ~3 rows (aproximadamente)
-DELETE FROM `cargo`;
-INSERT INTO `cargo` (`codCargo`, `nome`, `salarioInicial`) VALUES
-	(7, 'faxineiro', 1604),
-	(8, 'cozinheiro', 2500),
-	(9, 'Gerente', 2800);
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.categoria
 DROP TABLE IF EXISTS `categoria`;
@@ -61,11 +52,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   PRIMARY KEY (`codCategoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.categoria: ~2 rows (aproximadamente)
-DELETE FROM `categoria`;
-INSERT INTO `categoria` (`codCategoria`, `nome`) VALUES
-	(8, 'doces'),
-	(9, 'caseiro');
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.cliente
 DROP TABLE IF EXISTS `cliente`;
@@ -82,12 +69,9 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `cep` varchar(15) DEFAULT NULL,
   `uf` char(2) DEFAULT NULL,
   PRIMARY KEY (`codCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.cliente: ~0 rows (aproximadamente)
-DELETE FROM `cliente`;
-INSERT INTO `cliente` (`codCliente`, `nome`, `cpf`, `email`, `dataNascimento`, `telefone`, `endereco`, `bairro`, `cidade`, `cep`, `uf`) VALUES
-	(6, 'Caio', '123.333.228-06', 'Caio.aluno@gmail.com', '2004-05-19', '(35) 98888-8888', 'Rua do desconsolo', 'periferia', 'alfenas', NULL, 'PI');
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.entregas
 DROP TABLE IF EXISTS `entregas`;
@@ -101,8 +85,7 @@ CREATE TABLE IF NOT EXISTS `entregas` (
   CONSTRAINT `cliente` FOREIGN KEY (`cliente_codCliente`) REFERENCES `cliente` (`codCliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.entregas: ~0 rows (aproximadamente)
-DELETE FROM `entregas`;
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.fornecedor
 DROP TABLE IF EXISTS `fornecedor`;
@@ -113,10 +96,9 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `endereco` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`codFornecedor`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.fornecedor: ~0 rows (aproximadamente)
-DELETE FROM `fornecedor`;
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.funcionario
 DROP TABLE IF EXISTS `funcionario`;
@@ -132,10 +114,9 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`codFuncionario`) USING BTREE,
   KEY `fk_funcionario_cargo1_idx` (`cargo_codCargo`),
   CONSTRAINT `fk_funcionario_cargo1` FOREIGN KEY (`cargo_codCargo`) REFERENCES `cargo` (`codCargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.funcionario: ~0 rows (aproximadamente)
-DELETE FROM `funcionario`;
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.item_venda
 DROP TABLE IF EXISTS `item_venda`;
@@ -152,8 +133,7 @@ CREATE TABLE IF NOT EXISTS `item_venda` (
   CONSTRAINT `fk_produto_has_venda_produto1` FOREIGN KEY (`produto_codProduto`) REFERENCES `produto` (`codProduto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.item_venda: ~0 rows (aproximadamente)
-DELETE FROM `item_venda`;
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.marca
 DROP TABLE IF EXISTS `marca`;
@@ -162,13 +142,9 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nome` varchar(50) NOT NULL,
   `observacoes` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`codMarca`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 
--- Copiando dados para a tabela lanchonete_2d_2024.marca: ~2 rows (aproximadamente)
-DELETE FROM `marca`;
-INSERT INTO `marca` (`codMarca`, `nome`, `observacoes`) VALUES
-	(12, 'ELMA CHIPS', 'salgadinho'),
-	(13, 'COCA COLA', 'muito vendido');
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.produto
 DROP TABLE IF EXISTS `produto`;
@@ -186,10 +162,23 @@ CREATE TABLE IF NOT EXISTS `produto` (
   KEY `fk_produto_categoria1_idx` (`categoria_codCategoria`),
   CONSTRAINT `fk_produto_categoria1` FOREIGN KEY (`categoria_codCategoria`) REFERENCES `categoria` (`codCategoria`),
   CONSTRAINT `fk_produto_marca` FOREIGN KEY (`marca_codMarca`) REFERENCES `marca` (`codMarca`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.produto: ~0 rows (aproximadamente)
-DELETE FROM `produto`;
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela lanchonete_2d_2024.usuario
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `IDUSUARIO` int NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `SENHA` varchar(100) NOT NULL,
+  `CREATED_AT` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`IDUSUARIO`),
+  UNIQUE KEY `EMAIL` (`EMAIL`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela lanchonete_2d_2024.venda
 DROP TABLE IF EXISTS `venda`;
@@ -206,8 +195,7 @@ CREATE TABLE IF NOT EXISTS `venda` (
   CONSTRAINT `fk_venda_funcionario1` FOREIGN KEY (`funcionario_codFuncionario`) REFERENCES `funcionario` (`codFuncionario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela lanchonete_2d_2024.venda: ~0 rows (aproximadamente)
-DELETE FROM `venda`;
+-- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para view lanchonete_2d_2024.vi_anoscontrato
 DROP VIEW IF EXISTS `vi_anoscontrato`;
@@ -390,53 +378,43 @@ SET SQL_MODE=@OLDTMP_SQL_MODE;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_anoscontrato`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_anoscontrato` AS select `funcionario`.`codFuncionario` AS `codFuncionario`,`funcionario`.`nome` AS `nome`,`funcionario`.`cpf` AS `cpf`,date_format(`funcionario`.`dataAdmissao`,'%d/%m/%Y') AS `dataContrato`,floor(((to_days(curdate()) - to_days(`funcionario`.`dataAdmissao`)) / 365)) AS `anosContrato` from `funcionario`
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_anoscontrato` AS select `funcionario`.`codFuncionario` AS `codFuncionario`,`funcionario`.`nome` AS `nome`,`funcionario`.`cpf` AS `cpf`,date_format(`funcionario`.`dataAdmissao`,'%d/%m/%Y') AS `dataContrato`,floor(((to_days(curdate()) - to_days(`funcionario`.`dataAdmissao`)) / 365)) AS `anosContrato` from `funcionario`;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_cardapio`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_cardapio` AS select `p`.`nome` AS `nomeProduto`,format(`p`.`precoVenda`,2) AS `precoVenda`,`m`.`nome` AS `nomeMarca`,`c`.`nome` AS `Categoria` from ((`produto` `p` join `marca` `m`) join `categoria` `c` on(((`p`.`marca_codMarca` = `m`.`codMarca`) and (`p`.`categoria_codCategoria` = `c`.`codCategoria`))))
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_cardapio` AS select `p`.`nome` AS `nomeProduto`,format(`p`.`precoVenda`,2) AS `precoVenda`,`m`.`nome` AS `nomeMarca`,`c`.`nome` AS `Categoria` from ((`produto` `p` join `marca` `m`) join `categoria` `c` on(((`p`.`marca_codMarca` = `m`.`codMarca`) and (`p`.`categoria_codCategoria` = `c`.`codCategoria`))));
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_cargosalariodecrescente`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_cargosalariodecrescente` AS select `cargo`.`nome` AS `nome`,`cargo`.`salarioInicial` AS `salarioinicial` from `cargo` order by `cargo`.`salarioInicial` desc
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_cargosalariodecrescente` AS select `cargo`.`nome` AS `nome`,`cargo`.`salarioInicial` AS `salarioinicial` from `cargo` order by `cargo`.`salarioInicial` desc;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_controlefuncionarios`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_controlefuncionarios` AS select `f`.`nome` AS `nome`,`f`.`cpf` AS `cpf`,date_format(`f`.`dataAdmissao`,'%d/%m/%Y') AS `inicioContrato`,floor(((to_days(curdate()) - to_days(`f`.`dataAdmissao`)) / 365)) AS `anosContrato`,`c`.`salarioInicial` AS `salarioInicial` from (`funcionario` `f` join `cargo` `c` on((`f`.`cargo_codCargo` = `c`.`codCargo`))) where (`c`.`salarioInicial` < 2000)
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_controlefuncionarios` AS select `f`.`nome` AS `nome`,`f`.`cpf` AS `cpf`,date_format(`f`.`dataAdmissao`,'%d/%m/%Y') AS `inicioContrato`,floor(((to_days(curdate()) - to_days(`f`.`dataAdmissao`)) / 365)) AS `anosContrato`,`c`.`salarioInicial` AS `salarioInicial` from (`funcionario` `f` join `cargo` `c` on((`f`.`cargo_codCargo` = `c`.`codCargo`))) where (`c`.`salarioInicial` < 2000);
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_controleproduto`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_controleproduto` AS select `produto`.`codProduto` AS `codProduto`,`produto`.`nome` AS `nome`,format(`produto`.`precoCusto`,2) AS `precoCusto`,format(`produto`.`precoVenda`,2) AS `precoVenda` from `produto`
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_controleproduto` AS select `produto`.`codProduto` AS `codProduto`,`produto`.`nome` AS `nome`,format(`produto`.`precoCusto`,2) AS `precoCusto`,format(`produto`.`precoVenda`,2) AS `precoVenda` from `produto`;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_funcionarioscargos`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_funcionarioscargos` AS select `f`.`nome` AS `nome`,`f`.`codFuncionario` AS `codFuncionario`,`f`.`carTrab` AS `carTrab`,`c`.`nome` AS `nomeCargo`,`c`.`salarioInicial` AS `salarioInicial`,date_format(`f`.`dataAdmissao`,'%d/%m/%Y') AS `admissao` from (`cargo` `c` join `funcionario` `f` on((`c`.`codCargo` = `f`.`cargo_codCargo`)))
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_funcionarioscargos` AS select `f`.`nome` AS `nome`,`f`.`codFuncionario` AS `codFuncionario`,`f`.`carTrab` AS `carTrab`,`c`.`nome` AS `nomeCargo`,`c`.`salarioInicial` AS `salarioInicial`,date_format(`f`.`dataAdmissao`,'%d/%m/%Y') AS `admissao` from (`cargo` `c` join `funcionario` `f` on((`c`.`codCargo` = `f`.`cargo_codCargo`)));
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_idadeclientes`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_idadeclientes` AS select `c`.`nome` AS `nome`,`c`.`email` AS `email`,date_format(`c`.`dataNascimento`,'%d/%m/%Y') AS `nascimento`,timestampdiff(YEAR,`c`.`dataNascimento`,curdate()) AS `idade` from `cliente` `c`
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_idadeclientes` AS select `c`.`nome` AS `nome`,`c`.`email` AS `email`,date_format(`c`.`dataNascimento`,'%d/%m/%Y') AS `nascimento`,timestampdiff(YEAR,`c`.`dataNascimento`,curdate()) AS `idade` from `cliente` `c`;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_notinhadetalhada`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_notinhadetalhada` AS select `i`.`venda_codVenda` AS `venda_codVenda`,`p`.`nome` AS `nome`,`i`.`quantVenda` AS `quantVenda`,format(`p`.`precoVenda`,2) AS `precoUnitario`,format((`i`.`quantVenda` * `p`.`precoVenda`),2) AS `totalPorItem` from (`item_venda` `i` join `produto` `p` on((`i`.`produto_codProduto` = `p`.`codProduto`)))
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_notinhadetalhada` AS select `i`.`venda_codVenda` AS `venda_codVenda`,`p`.`nome` AS `nome`,`i`.`quantVenda` AS `quantVenda`,format(`p`.`precoVenda`,2) AS `precoUnitario`,format((`i`.`quantVenda` * `p`.`precoVenda`),2) AS `totalPorItem` from (`item_venda` `i` join `produto` `p` on((`i`.`produto_codProduto` = `p`.`codProduto`)));
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_totalpagarporvenda`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_totalpagarporvenda` AS select `v`.`codVenda` AS `codVenda`,`c`.`nome` AS `nome`,`v`.`tipoPagamento` AS `tipoPagamento`,sum(format((`i`.`quantVenda` * `p`.`precoVenda`),2)) AS `total_a_pagar` from (((`venda` `v` join `cliente` `c` on((`v`.`cliente_codCliente` = `c`.`codCliente`))) join `item_venda` `i` on((`i`.`venda_codVenda` = `v`.`codVenda`))) join `produto` `p` on((`p`.`codProduto` = `i`.`produto_codProduto`))) group by `v`.`codVenda`,`c`.`nome`,`v`.`tipoPagamento`
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_totalpagarporvenda` AS select `v`.`codVenda` AS `codVenda`,`c`.`nome` AS `nome`,`v`.`tipoPagamento` AS `tipoPagamento`,sum(format((`i`.`quantVenda` * `p`.`precoVenda`),2)) AS `total_a_pagar` from (((`venda` `v` join `cliente` `c` on((`v`.`cliente_codCliente` = `c`.`codCliente`))) join `item_venda` `i` on((`i`.`venda_codVenda` = `v`.`codVenda`))) join `produto` `p` on((`p`.`codProduto` = `i`.`produto_codProduto`))) group by `v`.`codVenda`,`c`.`nome`,`v`.`tipoPagamento`;
 
 -- Removendo tabela temporária e criando a estrutura VIEW final
 DROP TABLE IF EXISTS `vi_vendaspix`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_vendaspix` AS select `v`.`codVenda` AS `codVenda`,date_format(`v`.`dataHora`,'%d/%m/%Y') AS `referenciaData`,`v`.`tipoPagamento` AS `tipoPagamento`,`f`.`nome` AS `nome`,`f`.`carTrab` AS `carTrab` from (`venda` `v` join `funcionario` `f` on((`v`.`funcionario_codFuncionario` = `f`.`codFuncionario`))) where (`v`.`tipoPagamento` = 'pix')
-;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vi_vendaspix` AS select `v`.`codVenda` AS `codVenda`,date_format(`v`.`dataHora`,'%d/%m/%Y') AS `referenciaData`,`v`.`tipoPagamento` AS `tipoPagamento`,`f`.`nome` AS `nome`,`f`.`carTrab` AS `carTrab` from (`venda` `v` join `funcionario` `f` on((`v`.`funcionario_codFuncionario` = `f`.`codFuncionario`))) where (`v`.`tipoPagamento` = 'pix');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
