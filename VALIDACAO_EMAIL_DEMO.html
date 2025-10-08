@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Email - Demonstração</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE4CC 100%);
+            color: #4A2C2A;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 4px solid #E25822;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(226, 88, 34, 0.3);
+        }
+
+        h1 {
+            color: #E25822;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #E25822;
+        }
+
+        .section h2 {
+            color: #E25822;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .message-demo {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .flow-diagram {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+            border-left: 4px solid #E25822;
+        }
+
+        .flow-number {
+            background: #E25822;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .flow-text {
+            flex: 1;
+        }
+
+        .arrow {
+            text-align: center;
+            color: #E25822;
+            font-size: 1.5rem;
+            margin: 5px 0;
+        }
+
+        .test-case {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 2px solid #dee2e6;
+        }
+
+        .test-case h4 {
+            color: #E25822;
+            margin-bottom: 10px;
+        }
+
+        .test-input {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-family: monospace;
+        }
+
+        .check {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .btn-demo {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            background-color: #E25822;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-demo:hover {
+            background-color: #c44a1c;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Validação de Email Já Cadastrado</h1>
+
+        <div class="section">
+            <h2>✅ Como Funciona</h2>
+            <p>O sistema verifica se o email já existe no banco de dados <strong>ANTES</strong> de tentar criar um novo usuário.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-text">
+                        <strong>Usuário preenche o formulário de cadastro</strong>
+                        <div class="test-input">Email: teste@lanchonete.com</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-text">
+                        <strong>Sistema valida os campos obrigatórios</strong>
+                        <div style="margin-top: 5px;">✓ Nome, Email e Senha preenchidos</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-text">
+                        <strong>Sistema verifica se as senhas coincidem</strong>
+                        <div style="margin-top: 5px;">✓ Senha == Confirmar Senha</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-text">
+                        <strong>Sistema consulta o banco de dados</strong>
+                        <div class="test-input" style="margin-top: 5px;">
+                            SELECT * FROM USUARIO WHERE EMAIL='teste@lanchonete.com'
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">5</div>
+                    <div class="flow-text">
+                        <strong>Email encontrado? Mostrar mensagem de erro!</strong>
+                        <div class="message-demo message-error" style="margin-top: 10px;">
+                            Este email já está cadastrado!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💻 Código Implementado</h2>
+            
+            <h3 style="color: #E25822; margin: 15px 0;">AuthControlador.java (Linha 123-127)</h3>
+            <div class="code-block">
+if (objUsuarioDao.emailJaExiste(email)) {
+    req.setAttribute("mensagemErro", "Este email já está cadastrado!");
+    exibirCadastro(req, resp);
+    return;
+}
+            </div>
+
+            <h3 style="color: #E25822; margin: 15px 0;">UsuarioDao.java (Linha 58-62)</h3>
+            <div class="code-block">
+public boolean emailJaExiste(String email) {
+    String sql = "SELECT * FROM USUARIO WHERE EMAIL=?";
+    Usuario usuario = buscarPorId(sql, new UsuarioRowMapper(), email);
+    return usuario != null;
+}
+            </div>
+
+            <h3 style="color: #E25822; margin: 15px 0;">cadastro.jsp (Linha 180-182)</h3>
+            <div class="code-block">
+&lt;c:if test="${not empty mensagemErro}"&gt;
+    &lt;div class="mensagem mensagem-erro"&gt;${mensagemErro}&lt;/div&gt;
+&lt;/c:if&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Casos de Teste</h2>
+
+            <div class="test-case">
+                <h4><span class="check">✓</span> Teste 1: Email Novo</h4>
+                <div class="test-input">Email: novousuario@teste.com</div>
+                <div class="message-demo message-success">
+                    Usuário cadastrado com sucesso! Faça login para continuar.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4><span class="check">✓</span> Teste 2: Email Duplicado</h4>
+                <div class="test-input">Email: admin@lanchonete.com (já existe)</div>
+                <div class="message-demo message-error">
+                    Este email já está cadastrado!
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4><span class="check">✓</span> Teste 3: Tentar novamente com outro email</h4>
+                <div class="test-input">Email: admin2@lanchonete.com (não existe)</div>
+                <div class="message-demo message-success">
+                    Usuário cadastrado com sucesso! Faça login para continuar.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Passo a Passo para Testar</h2>
+            <ol style="margin-left: 20px;">
+                <li style="margin: 15px 0;">
+                    <strong>Acesse a página de cadastro:</strong><br>
+                    <span class="highlight">http://localhost:8080/victoriamasaro-1.0-SNAPSHOT/com/mycompany/victoriamasaro/controlador/AuthControlador?opcao=exibirCadastro</span>
+                </li>
+                
+                <li style="margin: 15px 0;">
+                    <strong>Tente cadastrar com email existente:</strong>
+                    <ul>
+                        <li>Nome: Teste Usuario</li>
+                        <li>Email: <strong>admin@lanchonete.com</strong> (email que já existe)</li>
+                        <li>Senha: 123456</li>
+                        <li>Confirmar Senha: 123456</li>
+                    </ul>
+                </li>
+                
+                <li style="margin: 15px 0;">
+                    <strong>Clique em "Cadastrar"</strong>
+                </li>
+                
+                <li style="margin: 15px 0;">
+                    <strong>Resultado esperado:</strong><br>
+                    Você deve ver uma mensagem vermelha no topo da página:
+                    <div class="message-demo message-error" style="margin-top: 10px;">
+                        Este email já está cadastrado!
+                    </div>
+                </li>
+                
+                <li style="margin: 15px 0;">
+                    <strong>Agora tente com email novo:</strong>
+                    <ul>
+                        <li>Email: <strong>meunovoemail@teste.com</strong></li>
+                        <li>Preencha os outros campos</li>
+                        <li>Clique em "Cadastrar"</li>
+                    </ul>
+                </li>
+                
+                <li style="margin: 15px 0;">
+                    <strong>Resultado esperado:</strong><br>
+                    Deve redirecionar para o login com mensagem de sucesso verde!
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Emails para Testar (já cadastrados)</h2>
+            <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 15px;">
+                <p style="margin-bottom: 10px;"><strong>Use estes emails para ver a mensagem de erro:</strong></p>
+                <ul>
+                    <li><code>admin@lanchonete.com</code></li>
+                    <li><code>victoria@lanchonete.com</code></li>
+                    <li><code>teste@lanchonete.com</code></li>
+                </ul>
+                <p style="margin-top: 15px;"><em>💡 Dica: Qualquer outro email que você criar também causará o erro na próxima tentativa!</em></p>
+            </div>
+        </div>
+
+        <div class="section" style="background: #d4edda; border-left: 4px solid #28a745;">
+            <h2 style="color: #155724;">✅ Sistema Funcionando Perfeitamente!</h2>
+            <p style="margin-top: 10px;">
+                A validação de email duplicado está <strong>100% implementada e funcionando</strong>. 
+                O sistema verifica no banco de dados e mostra a mensagem de erro quando necessário.
+            </p>
+            <ul style="margin-top: 15px;">
+                <li><span class="check">✓</span> Validação no backend (Java)</li>
+                <li><span class="check">✓</span> Consulta ao banco de dados</li>
+                <li><span class="check">✓</span> Mensagem de erro exibida no frontend (JSP)</li>
+                <li><span class="check">✓</span> Formulário preserva os dados preenchidos</li>
+                <li><span class="check">✓</span> Usuário pode corrigir o email e tentar novamente</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#" onclick="window.print(); return false;" class="btn-demo">🖨️ Imprimir Esta Página</a>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #e9ecef; border-radius: 8px; text-align: center;">
+            <p style="font-size: 0.9rem; color: #6c757d;">
+                <strong>📌 Documentação Técnica</strong><br>
+                Sistema de Validação de Email | Victoria Masaro | 08/10/2025
+            </p>
+        </div>
+    </div>
+</body>
+</html>

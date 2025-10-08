@@ -194,7 +194,7 @@
             <div class="mensagem">${mensagem}</div>
         </c:if>
 
-        <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregasControlador">
+        <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregaControlador">
             <input type="hidden" name="codEntrega" value="${codEntrega}">
             <input type="hidden" name="opcao" value="${opcao}">
 
@@ -220,7 +220,7 @@
 
             <div class="form-buttons">
                 <input type="submit" class="btn-salvar" value="Salvar">
-                <a href="${pageContext.request.contextPath}${URL_BASE}/EntregasControlador?opcao=cancelar" class="btn-cancelar">Cancelar</a>
+                <a href="${pageContext.request.contextPath}${URL_BASE}/EntregaControlador?opcao=cancelar" class="btn-cancelar">Cancelar</a>
             </div>
         </form>
 
@@ -245,7 +245,7 @@
                                 <td>${entrega.numeroCasa}</td>
                                 <td>${entrega.objCliente.nome}</td>
                                 <td>
-                                    <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregasControlador" style="display:inline;">
+                                    <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregaControlador" style="display:inline;">
                                         <input type="hidden" name="codEntrega" value="${entrega.codEntrega}">
                                         <input type="hidden" name="endereco" value="${entrega.endereco}">
                                         <input type="hidden" name="numeroCasa" value="${entrega.numeroCasa}">
@@ -255,7 +255,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregasControlador" style="display:inline;">
+                                    <form method="post" action="${pageContext.request.contextPath}${URL_BASE}/EntregaControlador" style="display:inline;">
                                         <input type="hidden" name="codEntrega" value="${entrega.codEntrega}">
                                         <input type="hidden" name="endereco" value="${entrega.endereco}">
                                         <input type="hidden" name="numeroCasa" value="${entrega.numeroCasa}">

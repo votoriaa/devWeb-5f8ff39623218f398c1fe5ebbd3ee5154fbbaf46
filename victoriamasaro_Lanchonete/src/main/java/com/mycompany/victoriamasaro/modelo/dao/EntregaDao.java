@@ -13,7 +13,7 @@ import java.util.List;
 public class EntregaDao extends GenericoDAO<Entrega> {
 
     public void salvar(Entrega objEntrega) {
-        String sql = "INSERT INTO entrega(endereco, numeroCasa, cliente_codCliente) VALUES (?, ?, ?)"; // Tabela 'entrega'
+        String sql = "INSERT INTO entregas(endereco, numeroCasa, cliente_codCliente) VALUES (?, ?, ?)";
         save(sql,
             objEntrega.getEndereco(),
             objEntrega.getNumeroCasa(),
@@ -22,7 +22,7 @@ public class EntregaDao extends GenericoDAO<Entrega> {
     }
 
     public void alterar(Entrega objEntrega) {
-        String sql = "UPDATE entrega SET endereco=?, numeroCasa=?, cliente_codCliente=? WHERE codEntrega=?"; // Tabela 'entrega'
+        String sql = "UPDATE entregas SET endereco=?, numeroCasa=?, cliente_codCliente=? WHERE codEntrega=?";
         save(sql,
             objEntrega.getEndereco(),
             objEntrega.getNumeroCasa(),
@@ -32,7 +32,7 @@ public class EntregaDao extends GenericoDAO<Entrega> {
     }
 
     public void excluir(Entrega objEntrega) {
-        String sql = "DELETE FROM entrega WHERE codEntrega=?"; // Tabela 'entrega'
+        String sql = "DELETE FROM entregas WHERE codEntrega=?";
         save(sql, objEntrega.getCodEntrega());
     }
 
@@ -52,12 +52,12 @@ public class EntregaDao extends GenericoDAO<Entrega> {
     }
 
     public List<Entrega> buscarTodasEntregas() {
-        String sql = "SELECT * FROM entrega"; // Tabela 'entrega'
+        String sql = "SELECT * FROM entregas";
         return buscarTodos(sql, new EntregaRowMapper());
     }
 
     public Entrega buscarEntregaPorId(int idEntrega) {
-        String sql = "SELECT * FROM entrega WHERE codEntrega=?"; // Tabela 'entrega'
+        String sql = "SELECT * FROM entregas WHERE codEntrega=?";
         return buscarPorId(sql, new EntregaRowMapper(), idEntrega);
     }
 }
